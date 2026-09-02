@@ -1,7 +1,7 @@
 {
   "name": "claudecodeskills",
   "version": "1.0.0",
-  "description": "Repositório de skills para o Claude Code, instaláveis com um único comando.",
+  "description": "Repositório de skills e configurações para o Claude Code, instaláveis com um único comando.",
   "homepage": "https://github.com/GualterAlbino/ClaudeCodeSkills#readme",
   "bugs": {
     "url": "https://github.com/GualterAlbino/ClaudeCodeSkills/issues"
@@ -13,8 +13,9 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
+  "bin": "scripts/install-config.js",
   "scripts": {
-    "prepare": "husky",
+    "prepare": "node scripts/prepare.js",
     "validate": "node scripts/validate.js",
     "config:list": "node scripts/install-config.js --list"
   },
