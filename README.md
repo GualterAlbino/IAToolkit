@@ -8,9 +8,11 @@ Skills são arquivos de instruções (`SKILL.md`) que ensinam o Claude Code a ex
 
 ## Skills disponíveis
 
-| Skill | Descrição |
-|-------|-----------|
-| `organizar-imports` | Organiza e agrupa imports de um arquivo TypeScript por escopo, em ordem crescente. |
+| Skill | Autor | Descrição |
+|-------|-------|-----------|
+| `commit-msg` | ricardoalves-dev | Gera commits atômicos, coesos e fáceis de entender e reverter. |
+| `gerar-mr` | ricardoalves-dev | Gera o conteúdo de um Merge Request a partir das alterações da branch atual. |
+| `organizar-imports` | ricardoalves-dev | Organiza e agrupa imports de um arquivo TypeScript por escopo, em ordem crescente. |
 
 ## Instalação
 
