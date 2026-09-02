@@ -14,24 +14,54 @@ Skills são arquivos de instruções (`SKILL.md`) que ensinam o Claude Code a ex
 
 ## Instalação (um comando, sem clonar)
 
-### Windows (PowerShell)
+### Instalar todas as skills
+
+**Windows (PowerShell):**
 
 ```powershell
 irm https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1 | iex
 ```
 
-### macOS / Linux
+**macOS / Linux:**
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.sh | bash
 ```
 
-O comando baixa o repositório temporariamente (via `git`) e instala **todas** as skills.
+### Instalar uma skill específica
 
-Para instalar uma skill específica (macOS/Linux):
+Passe o **nome da skill** como argumento:
+
+**Windows (PowerShell):**
+
+```powershell
+& ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1'))) organizar-imports
+```
+
+**macOS / Linux:**
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.sh | bash -s organizar-imports
+```
+
+Dá para instalar **várias** de uma vez (macOS/Linux):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.sh | bash -s organizar-imports outra-skill
+```
+
+### Ver a lista de skills disponíveis
+
+**Windows (PowerShell):**
+
+```powershell
+& ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1'))) list
+```
+
+**macOS / Linux:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.sh | bash -s list
 ```
 
 ### Pré-requisitos
@@ -47,8 +77,9 @@ Após instalar, **reinicie o Claude Code** para carregar as skills.
 git clone https://github.com/GualterAlbino/ClaudeCodeSkills.git
 cd ClaudeCodeSkills
 
-npm run install:all                      # todas as skills
-npm run install:skill organizar-imports  # uma skill específica
+npm run list                          # lista as skills disponíveis
+npm run install:all                   # todas as skills
+npm run install:skill organizar-imports   # uma skill específica
 ```
 
 ## Onde as skills são instaladas?
