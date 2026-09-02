@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-// Alvo: nome da skill, ou 'all' para instalar todas
-const target = process.argv[2] || 'all';
+// Argumentos: nomes de skills, "all", ou "list"
+const args = process.argv.slice(2);
 
 const skillsDir = path.join(__dirname, '..', 'skills');
 const destDir = path.join(os.homedir(), '.claude', 'skills');
@@ -14,23 +14,31 @@ const availableSkills = fs.readdirSync(skillsDir).filter((item) => {
   return fs.statSync(full).isDirectory() && fs.existsSync(path.join(full, 'SKILL.md'));
 });
 
-if (availableSkills.length === 0) {
-  console.error('❌ Nenhuma skill encontrada em skills/.');
+// Ação "list": mostra as skills disponíveis
+if (args[0] === 'list' || args[0] === '--list' || args[0] === 'ls') {
+  if (availableSkills.length === 0) {
+    console.log('Nenhuma skill disponível.');
+  } else {
+    console.log('Skills disponíveis:');
+    availableSkills.forEach((name) => console.log(`  • ${name}`));
+  }
+  process.exit(0);
+}
+
+// Sem argumento ou "all" → instala todas; senão, instala as indicadas
+const targets = args.length === 0 || args.includes('all') ? availableSkills : args;
+
+// Valida nomes desconhecidos
+const unknown = targets.filter((t) => !availableSkills.includes(t));
+if (unknown.length > 0) {
+  console.error(`❌ Skill(s) não encontrada(s): ${unknown.join(', ')}`);
+  console.log(`   Disponíveis: ${availableSkills.join(', ')}`);
   process.exit(1);
 }
 
-// Determina quais instalar
-const toInstall = target === 'all' ? availableSkills : [target];
-
-toInstall.forEach((name) => {
+targets.forEach((name) => {
   const src = path.join(skillsDir, name);
   const dest = path.join(destDir, name);
-
-  if (!fs.existsSync(path.join(src, 'SKILL.md'))) {
-    console.error(`❌ Skill "${name}" não encontrada.`);
-    console.log(`   Disponíveis: ${availableSkills.join(', ')}`);
-    process.exit(1);
-  }
 
   // Copia a skill para ~/.claude/skills/ (substituindo a versão anterior)
   fs.mkdirSync(destDir, { recursive: true });

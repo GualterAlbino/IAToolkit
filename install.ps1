@@ -1,11 +1,12 @@
 # Instala as skills deste repositório sem precisar clonar manualmente.
 # Uso (PowerShell):
 #   irm https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1 | iex
+#   & ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1'))) organizar-imports
+#   & ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1'))) list
 $ErrorActionPreference = "Stop"
 
 $repo = "https://github.com/GualterAlbino/ClaudeCodeSkills.git"
-$target = "all"
-if ($null -ne $args -and $args.Count -gt 0) { $target = $args[0] }
+$targets = @($args)
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw "git não encontrado. Instale o git e tente novamente." }
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) { throw "node não encontrado. Instale o Node.js e tente novamente." }
@@ -17,7 +18,7 @@ try {
   git clone --depth 1 $repo $tmp | Out-Null
 
   Write-Host "⚙️  Instalando as skills..."
-  node (Join-Path $tmp "scripts/install.js") $target
+  node (Join-Path $tmp "scripts/install.js") @targets
 }
 finally {
   if (Test-Path $tmp) { Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue }

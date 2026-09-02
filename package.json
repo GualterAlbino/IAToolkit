@@ -17,7 +17,8 @@
     "prepare": "husky",
     "validate": "node scripts/validate.js",
     "install:all": "node scripts/install.js all",
-    "install:skill": "node scripts/install.js"
+    "install:skill": "node scripts/install.js",
+    "list": "node scripts/install.js list"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",
