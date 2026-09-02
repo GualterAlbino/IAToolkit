@@ -93,6 +93,29 @@ O `npx skills` cuida disso automaticamente:
 
 3. Faça o commit e o `git push`. A skill passa a ficar disponível via `npx skills add`.
 
+## Configurações e ferramentas
+
+Além das skills, este repositório centraliza **configurações** do Claude Code em `config/`. Assim como nas skills, você escolhe **qual config** instalar.
+
+> As configs são instaladas a partir do código local — clone o repositório primeiro.
+
+### Listar as configurações
+
+```bash
+node scripts/install-config.js --list
+```
+
+### Instalar uma configuração
+
+```bash
+node scripts/install-config.js statusline            # global (~/.claude/)
+node scripts/install-config.js statusline --project  # por projeto (.claude/ deste diretório)
+```
+
+O instalador copia o(s) arquivo(s) da config para o diretório `.claude` correspondente e faz o merge do campo necessário no `settings.json`, **preservando** as configurações existentes. Depois, reinicie o Claude Code.
+
+> No escopo por projeto, rode o comando a partir do diretório do projeto em questão.
+
 ## Desenvolvimento
 
 - `npm run validate` — valida o frontmatter (`name`/`description`) de cada `SKILL.md` e a sintaxe dos scripts.
