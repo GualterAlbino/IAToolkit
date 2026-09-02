@@ -1,0 +1,13 @@
+# Dependências do Node
+node_modules/
+skills/*/node_modules/
+
+# Pastas de build
+dist/
+build/
+skills/*/dist/
+skills/*/build/
+
+# Logs e arquivos de sistema
+npm-debug.log
+.DS_Store
