@@ -95,26 +95,28 @@ O `npx skills` cuida disso automaticamente:
 
 ## Configurações e ferramentas
 
-Além das skills, este repositório centraliza **configurações** do Claude Code em `config/`. Assim como nas skills, você escolhe **qual config** instalar.
-
-> As configs são instaladas a partir do código local — clone o repositório primeiro.
+Além das skills, este repositório centraliza **configurações** do Claude Code em `config/`. Assim como nas skills, você instala com **um comando, sem clonar** — escolhendo qual config e o escopo.
 
 ### Listar as configurações
 
 ```bash
-node scripts/install-config.js --list
+npx github:GualterAlbino/ClaudeCodeSkills --list
 ```
 
 ### Instalar uma configuração
 
 ```bash
-node scripts/install-config.js statusline            # global (~/.claude/)
-node scripts/install-config.js statusline --project  # por projeto (.claude/ deste diretório)
+npx github:GualterAlbino/ClaudeCodeSkills statusline             # global (~/.claude/)
+npx github:GualterAlbino/ClaudeCodeSkills statusline --project   # por projeto (.claude/ deste diretório)
 ```
 
-O instalador copia o(s) arquivo(s) da config para o diretório `.claude` correspondente e faz o merge do campo necessário no `settings.json`, **preservando** as configurações existentes. Depois, reinicie o Claude Code.
+O `npx` baixa a config e o instalador copia o(s) arquivo(s) para o diretório `.claude` correspondente, fazendo o merge do campo necessário no `settings.json` — **preservando** as configurações existentes. Depois, reinicie o Claude Code.
 
 > No escopo por projeto, rode o comando a partir do diretório do projeto em questão.
+
+### Alternativa: instalar a partir do código local
+
+Se preferir, clone o repositório e rode `node scripts/install-config.js <config> [--project]` (mesma sintaxe).
 
 ## Desenvolvimento
 
