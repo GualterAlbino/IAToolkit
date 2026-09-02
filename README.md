@@ -1,10 +1,10 @@
 # 🛠️ Claude Skills Hub
 
-Repositório centralizado de **skills** para o Claude Code, instaláveis com um único comando — **sem precisar clonar**.
+Repositório de **skills** para o Claude Code, instaláveis com um único comando via [`npx skills`](https://github.com/vercel-labs/skills).
 
 ## O que são skills?
 
-Skills são arquivos de instruções (`SKILL.md`) que ensinam o Claude Code a executar tarefas específicas. Elas são copiadas para `~/.claude/skills/` e carregadas automaticamente na inicialização.
+Skills são arquivos de instruções (`SKILL.md`) que ensinam o Claude Code a executar tarefas específicas. Cada skill é uma pasta com um `SKILL.md` (frontmatter com `name` e `description`) e, opcionalmente, arquivos de apoio.
 
 ## Skills disponíveis
 
@@ -12,81 +12,62 @@ Skills são arquivos de instruções (`SKILL.md`) que ensinam o Claude Code a ex
 |-------|-----------|
 | `organizar-imports` | Organiza e agrupa imports de um arquivo TypeScript por escopo, em ordem crescente. |
 
-## Instalação (um comando, sem clonar)
+## Instalação
 
-### Instalar todas as skills
+Use o CLI [`skills`](https://github.com/vercel-labs/skills) — o mesmo padrão usado por outros repositórios de skills (ex.: `npx skills add JuliusBrussee/caveman`).
 
-**Windows (PowerShell):**
-
-```powershell
-irm https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1 | iex
-```
-
-**macOS / Linux:**
+### Ver o que o repo oferece
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.sh | bash
+npx skills add GualterAlbino/ClaudeCodeSkills --list
+```
+
+### Instalar tudo
+
+```bash
+npx skills add GualterAlbino/ClaudeCodeSkills
 ```
 
 ### Instalar uma skill específica
 
-Passe o **nome da skill** como argumento:
-
-**Windows (PowerShell):**
-
-```powershell
-& ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1'))) organizar-imports
+```bash
+npx skills add GualterAlbino/ClaudeCodeSkills --skill organizar-imports
 ```
 
-**macOS / Linux:**
+### Instalar globalmente (todos os projetos)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.sh | bash -s organizar-imports
-```
-
-Dá para instalar **várias** de uma vez (macOS/Linux):
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.sh | bash -s organizar-imports outra-skill
-```
-
-### Ver a lista de skills disponíveis
-
-**Windows (PowerShell):**
-
-```powershell
-& ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.ps1'))) list
-```
-
-**macOS / Linux:**
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/GualterAlbino/ClaudeCodeSkills/master/install.sh | bash -s list
+npx skills add GualterAlbino/ClaudeCodeSkills -g -a claude-code
 ```
 
 ### Pré-requisitos
 
+- [Node.js](https://nodejs.org/) 18+ (para o `npx`)
 - [git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/) 18+
 
-Após instalar, **reinicie o Claude Code** para carregar as skills.
+Após instalar, **reinicie o Claude Code** para carregar a skill.
 
-## Instalação alternativa (clonando)
+## Como usar a skill
 
-```bash
-git clone https://github.com/GualterAlbino/ClaudeCodeSkills.git
-cd ClaudeCodeSkills
+Depois de instalada e com o Claude Code reiniciado:
 
-npm run list                          # lista as skills disponíveis
-npm run install:all                   # todas as skills
-npm run install:skill organizar-imports   # uma skill específica
-```
+- **Linguagem natural:** descreva a tarefa (o Claude reconhece pela `description`):
+  ```
+  organize os imports deste arquivo agrupando por escopo
+  ```
+- **Invocação explícita:**
+  ```
+  /organizar-imports
+  ```
+
+> A skill `organizar-imports` organiza apenas **arquivos novos ou modificados** (regra definida no próprio `SKILL.md`).
 
 ## Onde as skills são instaladas?
 
-```
-~/.claude/skills/<nome-da-skill>/SKILL.md
-```
+O `npx skills` cuida disso automaticamente:
+
+- **Projeto:** `./.claude/skills/<nome>/`
+- **Global (`-g`):** `~/.claude/skills/<nome>/`
 
 ## Como criar uma nova skill
 
@@ -108,11 +89,11 @@ npm run install:skill organizar-imports   # uma skill específica
    ...
    ```
 
-3. Rode `npm run install:skill minha-skill`.
+3. Faça o commit e o `git push`. A skill passa a ficar disponível via `npx skills add`.
 
 ## Desenvolvimento
 
-- `npm run validate` — valida o frontmatter de cada `SKILL.md` e a sintaxe dos scripts.
+- `npm run validate` — valida o frontmatter (`name`/`description`) de cada `SKILL.md` e a sintaxe dos scripts.
 - O [Husky](https://typicode.github.io/husky/) executa essa validação em cada `git commit`, e o [commitlint](https://commitlint.js.org/) valida a mensagem do commit.
 
 ### Convenção de commits
@@ -121,9 +102,9 @@ Siga o padrão [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
 feat: adiciona skill de organizar imports
-fix: corrige caminho de instalação
+fix: corrige instrução da skill
 docs: atualiza README
 chore: atualiza dependências
 ```
 
-> **Nota:** as URLs de instalação apontam para a branch `master`. Lembre-se de publicar (`git push`) as mudanças para que a instalação via URL reflita a versão mais recente.
+> **Nota:** as URLs de instalação apontam para a branch `master`. Lembre-se de publicar (`git push`) as mudanças para que a instalação reflita a versão mais recente.
