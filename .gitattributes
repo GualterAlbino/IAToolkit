@@ -1,0 +1,2 @@
+# Scripts shell quebram com CRLF no bash (Windows) — força LF no checkout.
+*.sh text eol=lf
