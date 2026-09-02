@@ -1,5 +1,6 @@
 ---
 name: commit-msg
+author: ricardoalves-dev
 description: >
   Gera commits atômicos, coesos e fáceis de entender e reverter. Acione quando o usuário disser
   "escreva um commit", "gere um commit", "comite os arquivos" ou ao executar /commit-msg.

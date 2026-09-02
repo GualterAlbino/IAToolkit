@@ -1,5 +1,6 @@
 ---
 name: organizar-imports
+author: ricardoalves-dev
 description: Organiza e agrupa imports de um arquivo de acordo com seu path e escopo ordenando de forma crescente
 ---
 

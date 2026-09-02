@@ -1,5 +1,6 @@
 ---
 name: gerar-mr
+author: ricardoalves-dev
 description: >
    Gera o conteúdo de um Merge Request a partir das alterações da branch atual.
    Acione quando o usuário disser "gere o MR", "gere o merge request",
