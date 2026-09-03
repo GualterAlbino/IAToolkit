@@ -16,9 +16,61 @@ const CONFIGS = [
       return { statusLine: { type: 'command', command: `bash "${abs}"` } };
     },
   },
+  {
+    name: 'beep',
+    description: 'Alertas sonoros: bipe ao terminar (Stop) e ao pedir permissão.',
+    files: [],
+    settingsPatch() {
+      return {
+        hooks: {
+          Stop: [
+            {
+              hooks: [
+                {
+                  type: 'command',
+                  command: 'powershell -NoProfile -Command "[console]::beep(1000,250); [console]::beep(1400,300)"',
+                },
+              ],
+            },
+          ],
+          Notification: [
+            {
+              matcher: 'permission_prompt',
+              hooks: [
+                {
+                  type: 'command',
+                  command: 'powershell -NoProfile -Command "[console]::beep(700,200); [console]::beep(500,300); [console]::beep(700,200)"',
+                },
+              ],
+            },
+          ],
+        },
+      };
+    },
+  },
 ];
 
 const CONFIG_DIR = path.join(__dirname, '..', 'config');
+
+function isPlainObject(v) {
+  return v !== null && typeof v === 'object' && !Array.isArray(v);
+}
+
+// Merge profundo: objetos são fundidos (preservando chaves não citadas);
+// arrays e demais valores são sobrescritos (idempotente).
+function deepMerge(target, source) {
+  const out = { ...target };
+  for (const key of Object.keys(source)) {
+    const s = source[key];
+    const t = target[key];
+    if (isPlainObject(s) && isPlainObject(t)) {
+      out[key] = deepMerge(t, s);
+    } else {
+      out[key] = s;
+    }
+  }
+  return out;
+}
 
 function listConfigs() {
   console.log('Configurações disponíveis:\n');
@@ -90,9 +142,9 @@ const settings = fs.existsSync(settingsPath)
   ? JSON.parse(fs.readFileSync(settingsPath, 'utf8').replace(/^﻿/, ''))
   : {};
 
-Object.assign(settings, config.settingsPatch(targetDir));
+const merged = deepMerge(settings, config.settingsPatch(targetDir));
 
-fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
+fs.writeFileSync(settingsPath, JSON.stringify(merged, null, 2));
 
 console.log(`✅ ${config.name} instalado (${isProject ? 'projeto' : 'global'}):`);
 console.log(`   destino: ${targetDir}`);
