@@ -5,7 +5,7 @@ const os = require('os');
 
 // ── Registro de configurações ──
 // Cada entrada: nome, descrição, arquivos a copiar e o patch no settings.json.
-// Adicione novas configurações aqui; os arquivos ficam em config/.
+// Adicione novas configurações aqui; os arquivos ficam em claude/.
 const CONFIGS = [
   {
     name: 'statusline',
@@ -50,7 +50,7 @@ const CONFIGS = [
   },
 ];
 
-const CONFIG_DIR = path.join(__dirname, '..', 'config');
+const CONFIG_DIR = path.join(__dirname, '..', 'claude');
 
 function isPlainObject(v) {
   return v !== null && typeof v === 'object' && !Array.isArray(v);
@@ -131,7 +131,7 @@ fs.mkdirSync(targetDir, { recursive: true });
 for (const f of config.files) {
   const src = path.join(CONFIG_DIR, f.src);
   if (!fs.existsSync(src)) {
-    console.error(`❌ ${f.src} não encontrado em config/.`);
+    console.error(`❌ ${f.src} não encontrado em claude/.`);
     process.exit(1);
   }
   fs.copyFileSync(src, path.join(targetDir, f.dest));

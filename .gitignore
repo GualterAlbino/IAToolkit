@@ -11,3 +11,6 @@ skills/*/build/
 # Logs e arquivos de sistema
 npm-debug.log
 .DS_Store
+
+# Configurações do editor
+.vscode/

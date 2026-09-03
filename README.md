@@ -2,6 +2,17 @@
 
 Repositório de **skills** e **ferramentas** para assistentes de IA, instaláveis com um único comando via [`npx skills`](https://github.com/vercel-labs/skills).
 
+## Estrutura — o que é portável
+
+O repositório tem duas camadas, separadas de propósito:
+
+| Pasta | Conteúdo | Funciona em |
+|-------|----------|-------------|
+| `skills/` | Instruções (`SKILL.md`) de boas práticas: commits, MR, imports, questionamento. | Conteúdo **portável** — vale para qualquer assistente de IA; hoje é entregue no formato `SKILL.md` (Claude Code/Desktop e ferramentas que adotam o padrão `skills`). |
+| `claude/` | Configurações específicas do Claude Code: `statusLine`, hooks (`Stop`/`Notification`). | **Somente Claude Code.** |
+
+As **skills** são conhecimento genérico de engenharia; as **configs** em `claude/` dependem da mecânica interna do Claude Code (`settings.json`, o JSON do `statusLine` e os hooks).
+
 ## O que são skills?
 
 Skills são arquivos de instruções (`SKILL.md`) que ensinam o Claude Code a executar tarefas específicas. Cada skill é uma pasta com um `SKILL.md` (frontmatter com `name` e `description`) e, opcionalmente, arquivos de apoio.
@@ -93,9 +104,9 @@ O `npx skills` cuida disso automaticamente:
 
 3. Faça o commit e o `git push`. A skill passa a ficar disponível via `npx skills add`.
 
-## Configurações e ferramentas
+## Configurações do Claude Code (`claude/`)
 
-Além das skills, este repositório centraliza **configurações** do Claude Code em `config/`. Assim como nas skills, você instala com **um comando, sem clonar** — escolhendo qual config e o escopo.
+Além das skills, este repositório centraliza **configurações** do Claude Code em `claude/`. Assim como nas skills, você instala com **um comando, sem clonar** — escolhendo qual config e o escopo.
 
 | Config | O que faz |
 |--------|-----------|
