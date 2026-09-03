@@ -97,6 +97,11 @@ O `npx skills` cuida disso automaticamente:
 
 Além das skills, este repositório centraliza **configurações** do Claude Code em `config/`. Assim como nas skills, você instala com **um comando, sem clonar** — escolhendo qual config e o escopo.
 
+| Config | O que faz |
+|--------|-----------|
+| `statusline` | Status line customizada (contexto, custo, tokens, velocidade). |
+| `beep` | Alertas sonoros — bipe ao terminar a resposta e ao pedir permissão. |
+
 ### Listar as configurações
 
 ```bash
@@ -108,6 +113,7 @@ npx github:GualterAlbino/ClaudeCodeSkills --list
 ```bash
 npx github:GualterAlbino/ClaudeCodeSkills statusline             # global (~/.claude/)
 npx github:GualterAlbino/ClaudeCodeSkills statusline --project   # por projeto (.claude/ deste diretório)
+npx github:GualterAlbino/ClaudeCodeSkills beep --project         # alertas sonoros só neste projeto
 ```
 
 O `npx` baixa a config e o instalador copia o(s) arquivo(s) para o diretório `.claude` correspondente, fazendo o merge do campo necessário no `settings.json` — **preservando** as configurações existentes. Depois, reinicie o Claude Code.
