@@ -1,6 +1,6 @@
-# 🛠️ Claude Skills Hub
+# 🛠️ IAToolkit
 
-Repositório de **skills** para o Claude Code, instaláveis com um único comando via [`npx skills`](https://github.com/vercel-labs/skills).
+Repositório de **skills** e **ferramentas** para assistentes de IA, instaláveis com um único comando via [`npx skills`](https://github.com/vercel-labs/skills).
 
 ## O que são skills?
 
@@ -21,25 +21,25 @@ Use o CLI [`skills`](https://github.com/vercel-labs/skills) — o mesmo padrão 
 ### Ver o que o repo oferece
 
 ```bash
-npx skills add GualterAlbino/ClaudeCodeSkills --list
+npx skills add GualterAlbino/IAToolkit --list
 ```
 
 ### Instalar tudo
 
 ```bash
-npx skills add GualterAlbino/ClaudeCodeSkills
+npx skills add GualterAlbino/IAToolkit
 ```
 
 ### Instalar uma skill específica
 
 ```bash
-npx skills add GualterAlbino/ClaudeCodeSkills --skill organizar-imports
+npx skills add GualterAlbino/IAToolkit --skill organizar-imports
 ```
 
 ### Instalar globalmente (todos os projetos)
 
 ```bash
-npx skills add GualterAlbino/ClaudeCodeSkills -g -a claude-code
+npx skills add GualterAlbino/IAToolkit -g -a claude-code
 ```
 
 ### Pré-requisitos
@@ -105,15 +105,15 @@ Além das skills, este repositório centraliza **configurações** do Claude Cod
 ### Listar as configurações
 
 ```bash
-npx github:GualterAlbino/ClaudeCodeSkills --list
+npx github:GualterAlbino/IAToolkit --list
 ```
 
 ### Instalar uma configuração
 
 ```bash
-npx github:GualterAlbino/ClaudeCodeSkills statusline             # global (~/.claude/)
-npx github:GualterAlbino/ClaudeCodeSkills statusline --project   # por projeto (.claude/ deste diretório)
-npx github:GualterAlbino/ClaudeCodeSkills beep --project         # alertas sonoros só neste projeto
+npx github:GualterAlbino/IAToolkit statusline             # global (~/.claude/)
+npx github:GualterAlbino/IAToolkit statusline --project   # por projeto (.claude/ deste diretório)
+npx github:GualterAlbino/IAToolkit beep --project         # alertas sonoros só neste projeto
 ```
 
 O `npx` baixa a config e o instalador copia o(s) arquivo(s) para o diretório `.claude` correspondente, fazendo o merge do campo necessário no `settings.json` — **preservando** as configurações existentes. Depois, reinicie o Claude Code.

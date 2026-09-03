@@ -12,5 +12,5 @@ Organiza e agrupa imports de um arquivo TypeScript por escopo, em ordem crescent
 ## Instalação
 
 ```bash
-npx skills add GualterAlbino/ClaudeCodeSkills --skill organizar-imports
+npx skills add GualterAlbino/IAToolkit --skill organizar-imports
 ```

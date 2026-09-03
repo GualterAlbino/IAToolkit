@@ -13,5 +13,5 @@ Questiona pedidos de implementação vagos ou ambíguos, fazendo perguntas técn
 ## Instalação
 
 ```bash
-npx skills add GualterAlbino/ClaudeCodeSkills --skill questionante
+npx skills add GualterAlbino/IAToolkit --skill questionante
 ```

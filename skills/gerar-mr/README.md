@@ -14,5 +14,5 @@ Gera o conteúdo de um Merge Request a partir das alterações da branch atual.
 ## Instalação
 
 ```bash
-npx skills add GualterAlbino/ClaudeCodeSkills --skill gerar-mr
+npx skills add GualterAlbino/IAToolkit --skill gerar-mr
 ```

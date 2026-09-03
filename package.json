@@ -1,14 +1,14 @@
 {
-  "name": "claudecodeskills",
+  "name": "iatoolkit",
   "version": "1.0.0",
-  "description": "Repositório de skills e configurações para o Claude Code, instaláveis com um único comando.",
-  "homepage": "https://github.com/GualterAlbino/ClaudeCodeSkills#readme",
+  "description": "Repositório de skills e ferramentas para assistentes de IA, instaláveis com um único comando.",
+  "homepage": "https://github.com/GualterAlbino/IAToolkit#readme",
   "bugs": {
-    "url": "https://github.com/GualterAlbino/ClaudeCodeSkills/issues"
+    "url": "https://github.com/GualterAlbino/IAToolkit/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GualterAlbino/ClaudeCodeSkills.git"
+    "url": "git+https://github.com/GualterAlbino/IAToolkit.git"
   },
   "license": "ISC",
   "author": "",

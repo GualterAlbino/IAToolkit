@@ -14,5 +14,5 @@ Gera commits atômicos, coesos e fáceis de entender e reverter.
 ## Instalação
 
 ```bash
-npx skills add GualterAlbino/ClaudeCodeSkills --skill commit-msg
+npx skills add GualterAlbino/IAToolkit --skill commit-msg
 ```
