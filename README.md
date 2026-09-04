@@ -21,11 +21,11 @@ Skills são arquivos de instruções (`SKILL.md`) que ensinam o Claude Code a ex
 
 | Skill | Autor | Descrição |
 |-------|-------|-----------|
-| `commit-msg` | ricardoalves-dev | Gera commits atômicos, coesos e fáceis de entender e reverter. |
-| `gerar-mr` | ricardoalves-dev | Gera o conteúdo de um Merge Request a partir das alterações da branch atual. |
-| `gestor-worktree` | GualterAlbino | Isola o trabalho de múltiplos agentes em git worktrees, evitando conflitos e sobrescritas no mesmo repositório. |
-| `organizar-imports` | ricardoalves-dev | Organiza e agrupa imports de um arquivo TypeScript por escopo, em ordem crescente. |
-| `questionante` | GualterAlbino | Questiona pedidos de implementação vagos ou ambíguos, refinando a especificação antes de escrever código. |
+| `commit-msg` | [ricardoalves-dev](https://github.com/ricardoalves-dev) | Gera commits atômicos, coesos e fáceis de entender e reverter. |
+| `gerar-mr` | [ricardoalves-dev](https://github.com/ricardoalves-dev) | Gera o conteúdo de um Merge Request a partir das alterações da branch atual. |
+| `gestor-worktree` | [GualterAlbino](https://github.com/GualterAlbino) | Isola o trabalho de múltiplos agentes em git worktrees, evitando conflitos e sobrescritas no mesmo repositório. |
+| `organizar-imports` | [ricardoalves-dev](https://github.com/ricardoalves-dev) | Organiza e agrupa imports de um arquivo TypeScript por escopo, em ordem crescente. |
+| `questionante` | [GualterAlbino](https://github.com/GualterAlbino) | Questiona pedidos de implementação vagos ou ambíguos, refinando a especificação antes de escrever código. |
 
 ## Instalação
 
