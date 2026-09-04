@@ -23,7 +23,9 @@ Skills são arquivos de instruções (`SKILL.md`) que ensinam o Claude Code a ex
 |-------|-------|-----------|
 | `commit-msg` | ricardoalves-dev | Gera commits atômicos, coesos e fáceis de entender e reverter. |
 | `gerar-mr` | ricardoalves-dev | Gera o conteúdo de um Merge Request a partir das alterações da branch atual. |
+| `gestor-worktree` | GualterAlbino | Isola o trabalho de múltiplos agentes em git worktrees, evitando conflitos e sobrescritas no mesmo repositório. |
 | `organizar-imports` | ricardoalves-dev | Organiza e agrupa imports de um arquivo TypeScript por escopo, em ordem crescente. |
+| `questionante` | GualterAlbino | Questiona pedidos de implementação vagos ou ambíguos, refinando a especificação antes de escrever código. |
 
 ## Instalação
 
