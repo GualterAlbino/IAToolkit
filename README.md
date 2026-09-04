@@ -40,13 +40,13 @@ npx skills add GualterAlbino/IAToolkit --list
 ### Instalar tudo
 
 ```bash
-npx skills add GualterAlbino/IAToolkit
+npx skills add GualterAlbino/IAToolkit -a claude-code
 ```
 
 ### Instalar uma skill específica
 
 ```bash
-npx skills add GualterAlbino/IAToolkit --skill organizar-imports
+npx skills add GualterAlbino/IAToolkit --skill organizar-imports -a claude-code
 ```
 
 ### Instalar globalmente (todos os projetos)
@@ -79,10 +79,16 @@ Depois de instalada e com o Claude Code reiniciado:
 
 ## Onde as skills são instaladas?
 
-O `npx skills` cuida disso automaticamente:
+O `npx skills` instala em um diretório **canônico e neutro** — `.agents/skills/` — e, a partir dele, cria um link (symlink) ou cópia para o diretório do agente alvo:
 
-- **Projeto:** `./.claude/skills/<nome>/`
-- **Global (`-g`):** `~/.claude/skills/<nome>/`
+| Escopo | Local canônico (`.agents`) | Onde o Claude Code lê |
+|--------|---------------------------|----------------------|
+| Projeto | `./.agents/skills/<nome>/` | `./.claude/skills/<nome>/` |
+| Global (`-g`) | `~/.agents/skills/<nome>/` | `~/.claude/skills/<nome>/` |
+
+Ou seja: o `.agents/` é o ponto de entrada do CLI, comum a vários agentes (Claude Code, Codex, Cursor, Gemini CLI…). O **Claude Code só lê** de `.claude/skills/`, por isso o CLI espelha o conteúdo de `.agents/skills/` para lá.
+
+> **Importante:** especifique `-a claude-code` ao instalar. Sem ele (ou em projeto recém-criado), o CLI pode deixar a skill apenas em `.agents/skills/` sem criar o link em `.claude/skills/` — e aí o Claude Code não a enxerga. Isso é um [bug conhecido](https://github.com/vercel-labs/skills/issues/851).
 
 ## Como criar uma nova skill
 
